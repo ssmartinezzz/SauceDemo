@@ -65,5 +65,23 @@ public class BasePage {
 
     }
 
+    /***
+     * Returns the WebDriver instance used in the BasePage
+     *
+     * @return WebDriver instance
+     */
+    public WebDriver getDriver() {
+        return driver;
+    }
+
+    /***
+     * Returns the WebDriverWait instance used in the BasePage
+     *
+     * @return WebDriverWait instance
+     */
+    public WebDriverWait getWait() {
+        return wait;
+    }
+
 
 }

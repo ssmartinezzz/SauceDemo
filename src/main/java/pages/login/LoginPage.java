@@ -1,4 +1,4 @@
-package pages;
+package pages.login;
 
 import core.BasePage;
 import org.openqa.selenium.By;

@@ -15,6 +15,8 @@ public class MainPage extends BasePage {
     protected By allItemsBtn = By.id("inventory_sidebar_link");
     protected By crossBtn = By.id("react-burger-cross-btn");
 
+    protected By cartIcon = By.id("shopping_cart_container");
+
 
     /***
      * Class constructor used when multiple pages are used in the automation.
@@ -44,6 +46,10 @@ public class MainPage extends BasePage {
     public void clickCrossBtn() {
         super.click(crossBtn, Duration.ofSeconds(10));
 
+    }
+
+    public void clickCartIcon() {
+        super.click(cartIcon, Duration.ofSeconds(10));
     }
 
 
