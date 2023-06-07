@@ -3,6 +3,8 @@ package pages.login;
 import core.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -11,6 +13,8 @@ public class LoginPage extends BasePage {
    protected By userLoginField = By.id("user-name");
    protected By passwordLoginField = By.id("password");
    protected By loginButton = By.id("login-button");
+
+   protected By errorMsg = By.xpath("//h3[@data-test='error']");
 
     /***
      * Class constructor used when multiple pages are used in the automation.
@@ -54,6 +58,17 @@ public class LoginPage extends BasePage {
         enterPassword(password);
         clickLoginButton();
     }
+
+    /***
+     * Gets the text of the element "Alert" when credentials aren't good
+     * @return
+     */
+    public String getLockedUserMsg() {
+        WebElement element = wait.until(ExpectedConditions.visibilityOfElementLocated(errorMsg));
+        return element.getText();
+    }
+
+
 
 
 }
