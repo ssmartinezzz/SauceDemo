@@ -3,6 +3,7 @@ package pages.main;
 import core.BasePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
@@ -46,6 +47,11 @@ public class MainPage extends BasePage {
     public void clickCrossBtn() {
         super.click(crossBtn, Duration.ofSeconds(10));
 
+    }
+
+    public Boolean isMenuVisible() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(burgerMenuButton));
+        return driver.findElement(burgerMenuButton).isDisplayed();
     }
 
     public void clickCartIcon() {

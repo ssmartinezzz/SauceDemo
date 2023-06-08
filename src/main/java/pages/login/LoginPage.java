@@ -6,6 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.main.MainPage;
 
 import java.time.Duration;
 
@@ -57,6 +58,13 @@ public class LoginPage extends BasePage {
         enterUsername(username);
         enterPassword(password);
         clickLoginButton();
+    }
+
+    public MainPage LogToMain(String username, String password) {
+        enterUsername(username);
+        enterPassword(password);
+        clickLoginButton();
+        return new MainPage(driver, wait);
     }
 
     /***
