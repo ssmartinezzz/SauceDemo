@@ -22,21 +22,25 @@ public class ProductsPage extends BasePage {
         super(driver, wait);
     }
     public void clickAddButtonByProductName(String lookupVal) {
-        int index = -1;
         List<WebElement> elements = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(productName));
+        WebElement buttonToClick = null;
+
         for (WebElement element : elements) {
             String name = element.getText();
             if (name.equals(lookupVal)) {
-                index = elements.indexOf(element);
-                List<WebElement> addButtonList = wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(addToCart));
-                WebElement correctButton = addButtonList.get(index);
-                correctButton.click();
-            }
-            else {
-                System.out.printf("Add to cart button not found");
+                buttonToClick = element.findElement(By.xpath("./ancestor::div[contains(@class, 'inventory_item')]"
+                        + "//button[@class='btn btn_primary btn_small btn_inventory']"));
+                break;
             }
         }
 
-        System.out.println("Product not found: " + productName);
+        if (buttonToClick != null) {
+            wait.until(ExpectedConditions.elementToBeClickable(buttonToClick)).click();
+        } else {
+            throw new RuntimeException("Product not found: " + lookupVal);
+        }
     }
+
+
+
 }

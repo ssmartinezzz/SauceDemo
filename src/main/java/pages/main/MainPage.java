@@ -54,6 +54,14 @@ public class MainPage extends BasePage {
         return driver.findElement(burgerMenuButton).isDisplayed();
     }
 
+    public void openTab() {
+        this.clickBurgerMenu();
+        this.clickResetAppBtn();
+        this.clickAllItemsBtn();
+        this.clickCrossBtn();
+
+    }
+
     public void clickCartIcon() {
         super.click(cartIcon, Duration.ofSeconds(10));
     }
